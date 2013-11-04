@@ -1,0 +1,6 @@
+<h1>The best menus in the universe</h1>
+<% @menus.each do |menu| %>
+  <div> <%= menu.name %> </div>
+<% end %>
+
+<%= render "menus/new_form" %>
