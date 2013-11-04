@@ -1,0 +1,15 @@
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: jtr-nat-menu_development
+  pool: 5
+  username: jtr-nat-menu
+  password:
+
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: jtr-nat-menu_test
+  pool: 5
+  username: jtr-nat-menu
+  password:
