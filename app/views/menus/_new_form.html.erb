@@ -1,4 +1,4 @@
-<%= form_for @menu do |f| %>
+<%= form_for @menu, remote: true do |f| %>
   <%= f.text_field :name, placeholder: "name" %>
   <%= f.submit "add menu" %>
 <% end %>

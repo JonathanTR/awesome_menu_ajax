@@ -4,6 +4,6 @@
 
 <div id="list-of-menus">
   <% @menus.each do |menu| %>
-    <div class="menu-name"> <%= menu.name %> </div>
+    <%= render partial: "menus/new_menu", locals: { menu: menu } %>
   <% end %>
 </div>
