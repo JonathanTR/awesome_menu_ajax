@@ -5,10 +5,11 @@ $(document).ready(function(){
 var Menu = {
   init: function() {
     $("#new_menu").on("ajax:success", this.addMenu);
-    $("#list-of-menus").delegate(".menu-name", "click", this.updateMenu);
-    $("#list-of-menus").delegate(".menu-name", "mouseenter", this.showDelete);
-    $("#list-of-menus").delegate(".menu-name", "mouseleave", this.hideDelete);
-    $("#list-of-menus").delegate(".menu-name .delete-menu", "click", this.deleteMenu);
+    $("#list-of-menus").on("click", ".menu-name", this.updateMenu);
+    
+    $("#list-of-menus").on("mouseenter", ".menu-name", this.showDelete);
+    $("#list-of-menus").on("mouseleave", ".menu-name", this.hideDelete);
+    $("#list-of-menus").on("click", ".menu-name .delete-menu", this.deleteMenu);
   },
   
   addMenu: function(e, data) {
@@ -19,10 +20,10 @@ var Menu = {
   deleteMenu: function() {
     var id = event.srcElement.parentElement.id;
     $.ajax({
-      url: '/menus/'+ id,
+      url: '/menus/'+id,
       type: 'delete'
     })
-    .done(function() {
+    .done(function(){
       $("#"+id).remove();
     })
     .fail(function() {
@@ -31,26 +32,22 @@ var Menu = {
   },
 
   updateMenu: function() {
-    var id = event.srcElement.id;
-
-    console.log("before:")
-    console.log(event)
-
-    var text = event.srcElement.firstChild.textContent;
-
-    console.log("after:")
-    console.log(event)
-
-    $("#"+id).html('<form action="/menus/'+id+'" class="update-form" method="post"><input name="_method" type="hidden" value="put"><input type="text" name="menu[name]" value="'+text+'"></form>');
+    var id = this.id;
+    var text = $('#name').text();
+    // debugger;
+    $("#"+id).html('<form action="/menus/"'+ id +'" class="update-form" method="put"><input name="menu[name]" value="'+ text +'"></form>');
   },
 
   showDelete: function(){
-    var id = event.srcElement.id;
+    var id = this.id;
     $('#'+id+' button').removeClass('hidden');
   },
 
   hideDelete: function(){
-    var id = event.srcElement.id;
+    var id = this.id;
     $('#'+id+' button').addClass('hidden');
   }
 };
+
+// <div id="button" data-id="33">
+// $('div#button').data('id')
