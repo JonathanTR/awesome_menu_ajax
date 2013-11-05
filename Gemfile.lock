@@ -48,6 +48,7 @@ GEM
     execjs (2.0.2)
     hike (1.2.3)
     i18n (0.6.5)
+    jeditable-rails (0.1.1)
     journey (1.0.4)
     jquery-rails (3.0.4)
       railties (>= 3.0, < 5.0)
@@ -112,6 +113,7 @@ DEPENDENCIES
   better_errors
   binding_of_caller
   coffee-rails (~> 3.2.1)
+  jeditable-rails
   jquery-rails
   pg
   rails (= 3.2.14)

@@ -1,7 +1,7 @@
 class MenusController < ApplicationController
 
   def index
-    @menus = Menu.all
+    @menus = Menu.order("created_at DESC")
     @menu = Menu.new
   end
 
@@ -13,6 +13,13 @@ class MenusController < ApplicationController
       flash[:error] = "Please enter a valid menu name"
       redirect_to root_path
     end
+  end
+
+  def update
+    @menu = Menu.find(params[:id])
+    @menu.update_attribute(:name, params[:menu][:name])
+    # render json: { success: true }
+    redirect_to root_path
   end
 
   def destroy
